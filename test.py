@@ -1,6 +1,6 @@
 import threading
 from time import sleep
-import main
+import poolhub
 
 a = 5
 

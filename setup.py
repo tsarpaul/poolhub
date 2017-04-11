@@ -6,7 +6,7 @@ with open(os.path.join(os.path.dirname(__file__), 'requirements.txt')) as requir
 
 setup(
     name='poolhub',
-    version='0.0.1',
+    version='0.0.9',
     packages=find_packages(),
     description="Track threads in your Python program.",
     author='Paul Litvak',
