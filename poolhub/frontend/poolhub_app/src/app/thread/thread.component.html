@@ -1,0 +1,51 @@
+<accordion>
+  <accordion-group *ngFor="let ident of (threads | keys)" [panelClass]="isThreadAlive(threads[ident])"
+                   [isOpen]="accordionOpenOnStart">
+    <div accordion-heading>
+      Thread {{ident}} - {{threads[ident].name}}
+      <i class="pull-right float-xs-right glyphicon"
+         [ngClass]="{'glyphicon-chevron-down': group?.isOpen, 'glyphicon-chevron-right': !group?.isOpen}"></i>
+    </div>
+
+    <div style="margin-top: -6px;">
+      <div class="actions">
+        <div *ngIf="shouldTerminateButton(threads[ident])">
+          <button type="button" class="btn btn-danger" (click)="terminateThread(threads[ident])">
+            Terminate
+          </button>
+        </div>
+      </div>
+
+      <div class="info">
+        <h4>
+          <span class="label label-default">Health:</span>
+          <span class="label" [ngClass]="threads[ident].health==='Alive'? 'label-success': 'label-danger'">
+            {{threads[ident].health}}
+          </span>
+        </h4>
+        <h4 *ngIf="threads[ident].health == 'Crashed'">
+          <span class="label label-default">Exception:</span>
+          <span class="label" [ngClass]="'label-danger'">
+            {{threads[ident].exception}}
+          </span>
+        </h4>
+        <h4>
+          <span class="label label-default">Status:</span>
+          <span class="label label-primary">{{threads[ident].status}}</span>
+        </h4>
+        <h4>
+          <span class="label label-default">Daemon:</span>
+          <span class="label label-info">{{threads[ident].daemon}}</span>
+        </h4>
+        <h4>
+          <span class="label label-default">Last Updated:</span>
+          <span class="label label-info"><em style="color:#333333">{{threads[ident].last_updated}}</em></span>
+        </h4>
+      </div>
+    </div>
+
+    <div *ngIf="(threads[ident].children | keys).length > 0" style="margin-top:15px;">
+      <app-thread [threads]="threads[ident].children"></app-thread>
+    </div>
+  </accordion-group>
+</accordion>
