@@ -50,24 +50,16 @@ class API(object):
                     self.thread_node_registry[parent_node.ident] = parent_node
                 parent_node.add_child(thread_node)
 
-            # Checks if threads are still alive,
-            # if not we erase them from thread_registry and update thread_registry_node
-            outdated_threads = [thread_node for ident, thread_node in self.thread_node_registry.items() if
-                                ident not in thread_idents_iterated and thread_node.health == 'Alive']
-            for thread_node in outdated_threads:
-                # Thread state might've been altered in mean time:
+            # Updates thread_registry_node with dead threads
+            dead_threads = [thread_node for ident, thread_node in self.thread_node_registry.items() if
+                            ident not in thread_idents_iterated and thread_node.health == 'Alive']
+            for thread_node in dead_threads:
+                # Thread state might've been altered in mean time (terminated):
                 if thread_node.health == 'Alive':
-                    thread_node.health = 'Dead'
-                    thread_node.status = getattr(thread_node.thread, 'status', 'None')
+                    if thread_node.thread.exception is not None:  # Thread crashed
+                        thread_node.handle_exception()
+                    else:
+                        thread_node.health = 'Dead'
 
     def terminate_thread(self, ident):
         self.thread_node_registry[ident].terminate_thread()
-
-    # TODO: Remove this
-    def build_thread_tree(self, node):
-        """Builds a thread tree starting from node, using thread_registry"""
-        sub_tree = {}
-        if node.children:
-            for child_ident, child in node.children.items():
-                sub_tree.update(self.build_thread_tree(child))
-        return {node.ident: sub_tree}

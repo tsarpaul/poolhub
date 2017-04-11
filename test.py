@@ -6,7 +6,9 @@ a = 5
 
 
 def bunk():
-    sleep(1)
+    sleep(3)
+    a = 5
+    a.b
 
 
 def func(b):

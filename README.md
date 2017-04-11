@@ -15,9 +15,11 @@ poolhub is only compatible with Python 3
 import poolhub
 ```
 
+Once you run your program, the web browser will open.
+
 To set name and status in your thread:
 ```
-t = threading.Thread(name="Thread no. 1", status='Intializing thread', target=func)
+t = threading.Thread(name="Thread no. 1", status='Initializing thread', target=func)
 ```
 
 To update your thread's status:

@@ -1,2 +1,3 @@
-falcon
+aiohttp
+aiohttp_cors
 python-socketio
