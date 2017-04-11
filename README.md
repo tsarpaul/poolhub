@@ -1,4 +1,4 @@
-## poolhub
+# poolhub
 
 <i>Track threads in your Python program.</i>
 
@@ -6,11 +6,11 @@
     <img src="https://raw.githubusercontent.com/tsarpaul/poolhub/master/poolhub.png" alt="poolhub demo">
 </p>
 
-#### Installation
+### Installation
 poolhub is only compatible with Python 3
 > pip install poolhub
 
-#### Usage
+### Usage
 ```
 import poolhub
 ```
