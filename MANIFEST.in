@@ -4,4 +4,4 @@ include poolhub/main.py
 recursive-include poolhub/server *
 recursive-include poolhub/threads *
 include frontend/*.py
-recursive-include poolhub/frontend/poolhub-app/dist *
+recursive-include poolhub/frontend/poolhub_app/dist *

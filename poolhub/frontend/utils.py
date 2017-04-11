@@ -4,7 +4,7 @@ import webbrowser
 
 
 def get_index_path():
-    path = os.path.join(os.path.dirname(__file__), 'poolhub-app', 'dist', 'index.html')
+    path = os.path.join(os.path.dirname(__file__), 'poolhub_app', 'dist', 'index.html')
     return path
 
 
