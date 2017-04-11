@@ -1,0 +1,7 @@
+include __init__.py README.md LICENSE.txt requirements.txt setup.py MANIFEST.in
+
+include poolhub/main.py
+recursive-include poolhub/server *
+recursive-include poolhub/threads *
+include frontend/*.py
+recursive-include poolhub/frontend/poolhub-app/dist *
