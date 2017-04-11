@@ -33,5 +33,4 @@ t.status = "Reporting in for duty"
 When you terminate a thread, this raises a 
 `KeyBoardInterrupt` inside the thread to terminate it.
 
-
 GUI built with Angular 2
